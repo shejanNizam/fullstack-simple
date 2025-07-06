@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [jokes, setJokes] = useState([]);
+  console.log(jokes);
 
   useEffect(() => {
     axios
@@ -14,7 +15,7 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
 
   return (
     <>
@@ -23,8 +24,8 @@ function App() {
       {jokes.map((joke) => {
         return (
           <div key={joke.id}>
-            <h3>Title: {joke.title}</h3>
-            <p>Content: {joke.content}</p>
+            <h3>{joke.text}</h3>
+            <p>{joke.content}</p>
           </div>
         );
       })}
